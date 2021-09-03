@@ -29,23 +29,7 @@ app_service_plans = {
   }
 }
 
-function_apps = {
-  f1 = {
-    name               = "funapp-private"
-    resource_group_key = "funapp"
-    region             = "region1"
 
-    app_service_plan_key = "asp1"
-    storage_account_key  = "sa1"
-
-    settings = {
-      vnet_key   = "spoke"
-      subnet_key = "app"
-
-      enabled = true
-    }
-  }
-}
 
 storage_accounts = {
   sa1 = {
@@ -79,6 +63,10 @@ vnets = {
       app = {
         name = "app"
         cidr = ["10.1.0.0/28"]
+        delegation = {
+          name               = "serverFarms"
+          service_delegation = "Microsoft.Web/serverFarms"
+        }
       }
     }
 
@@ -89,5 +77,23 @@ vnets = {
 network_security_group_definition = {
   # This entry is applied to all subnets with no NSG defined
   empty_nsg = {
+  }
+}
+
+function_apps = {
+  f1 = {
+    name               = "funapp-private"
+    resource_group_key = "funapp"
+    region             = "region1"
+
+    app_service_plan_key = "asp1"
+    storage_account_key  = "sa1"
+
+    settings = {
+      vnet_key   = "spoke"
+      subnet_key = "app"
+
+      enabled = true
+    }
   }
 }
