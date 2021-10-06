@@ -21,6 +21,7 @@ module "example" {
   storage_accounts                      = var.storage_accounts
   subscription_billing_role_assignments = var.subscription_billing_role_assignments
   tags                                  = local.tags
+  remote_objects                        = var.remote_objects
 
   azuread = {
     azuread_api_permissions             = var.azuread_api_permissions
