@@ -598,3 +598,6 @@ variable "logic_app_trigger_recurrence" {
 variable "logic_app_trigger_custom" {
   default = {}
 }
+variable "remote_objects" {
+  default = {}
+}
